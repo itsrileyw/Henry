@@ -3,7 +3,7 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
-    while not bot.is_closed:
+    while (not bot.is_closed and datetime.datetime.now().hour > 8 and datetime.datetime.now().hour < 22):
         msg = shitpost()
         BestMeta = bot.get_server(os.getenv("HENRYSSERVER"))
         await bot.send_message(BestMeta.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
