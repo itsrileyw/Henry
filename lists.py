@@ -296,6 +296,7 @@ phrases = [
     "My girl mad at me cuz I been straight keeping the cubes bruh lmao.", 
     "WNBA be like: 'Wow a new record for loads of laundry done and sandwiches made in a single game!'",
 ]
+#"Recent" lists are used to store generated words/phrases and then to regenerate new gens so as not to be repetitive
 Nrecent1 = []
 Nrecent2 = []
 Nrecent3 = []
