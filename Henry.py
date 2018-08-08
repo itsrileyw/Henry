@@ -4,7 +4,7 @@ bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
     while not bot.is_closed:
-        msg = shitpost(1)
+        msg = shitpost()
         BestMeta = bot.get_server(os.getenv("BESTMETA"))
         await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
         Evolutionary = bot.get_server(os.getenv("EVOLUTIONARY"))
@@ -184,11 +184,7 @@ async def play(ctx, *args):
         msg += arg
         msg += ' '
     await bot.send_message(ctx.message.channel, '!play '+msg)
-def shitpost(c): #Uses returned intros, verbs, and nouns to create a coherent shitpost
-    if (c == 2):
-        d = 55
-    else:
-        d = 0
+def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shitpost
     a = random.randint(0,10)
     if (a < 5):
         intro = introGen(1)
@@ -196,7 +192,7 @@ def shitpost(c): #Uses returned intros, verbs, and nouns to create a coherent sh
     else:
         intro = introGen(2)
         end = "?"
-    b = random.randint(d,100)
+    b = random.randint(0,100)
     if (b < 50):
         verb = verbGen(1)
         noun = nounGen(1)
@@ -499,7 +495,7 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
 def retaliate(): #Returns a randomized threatening / offensive statement
     chance = random.randint(0,100)
     if (chance > 55):
-        response = shitpost(2)
+        response = phraseGen()
     else:
         response = introGen(3)+verbGen(1)+nounGen(3)
     return(response)
