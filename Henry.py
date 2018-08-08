@@ -5,8 +5,8 @@ bot = commands.Bot(command_prefix="Henry, ")
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
     while not bot.is_closed:
         msg = shitpost()
-        server = bot.get_server("272178393091407872") #The Best Meta
-        await bot.send_message(server.get_channel("454473643020517379"), msg) #The Best Meta
+        server = bot.get_server(os.getenv("BESTMETA"))
+        await bot.send_message(server.get_channel(os.getenv("GENERAL")), msg)
         for i in reversed(range(0,1801)):
             bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
