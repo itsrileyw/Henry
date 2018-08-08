@@ -10,7 +10,6 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
             BestMeta = bot.get_server(os.getenv("HENRYSSERVER"))
             await bot.send_message(BestMeta.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
         for i in reversed(range(0,2)):
-            print(datetime.datetime.now().hour)
             bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
 '''@bot.event
