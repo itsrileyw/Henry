@@ -296,3 +296,13 @@ phrases = [
     "My girl mad at me cuz I been straight keeping the cubes bruh lmao.", 
     "WNBA be like: 'Wow a new record for loads of laundry done and sandwiches made in a single game!'",
 ]
+Nrecent1 = []
+Nrecent2 = []
+Nrecent3 = []
+Vrecent1 = []
+Vrecent2 = []
+Vrecent3 = []
+Irecent1 = []
+Irecent2 = []
+Irecent3 = []
+Precent = []
