@@ -7,7 +7,7 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
         msg = shitpost()
         server = bot.get_server(os.getenv("BESTMETA"))
         await bot.send_message(server.get_channel(os.getenv("GENERAL")), msg)
-        for i in reversed(range(0,1801)):
+        for i in reversed(range(0,2001)):
             bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
 counter = 0
@@ -456,12 +456,11 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
     "everything you own.",
     "your ancestors.",
     "your fucking toaster.",
-    "your dumb fucking face."
+    "your dumb fucking face.",
     "your neighbors.",
     "a penguine and make you eat it.",
     "both of your arms.",
     "your peepee",
-
     ]
     if (len(Nrecent1) >= len(Nouns1)*0.9):
         del Nrecent1[0]
