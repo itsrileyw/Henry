@@ -6,7 +6,7 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
     while not bot.is_closed:
         shitInterval()
         for i in reversed(range(0,1801)):
-            if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 21):
+            if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 21):
                 bot.SPTime = "Idk man"
             else:
                 bot.SPTime = str(datetime.timedelta(seconds=i))
@@ -117,7 +117,7 @@ async def kick(ctx, user: discord.Member):
         await bot.kick(user)
 async def shitInterval():
     if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 21):
-        pass
+		    print("Too late / early")
     else:
         msg = shitpost()
         BestMeta = bot.get_server(os.getenv("BESTMETA"))
