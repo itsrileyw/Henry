@@ -4,7 +4,7 @@ bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
     while (not bot.is_closed):
-        if (datetime.datetime.now().hour > 8 and datetime.datetime.now().hour < 22):
+        if (datetime.datetime.now().hour > 5 and datetime.datetime.now().hour < 15):
             #msg = shitpost()
             msg = nounGen(1)
             BestMeta = bot.get_server(os.getenv("HENRYSSERVER"))
