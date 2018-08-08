@@ -97,6 +97,7 @@ verbs1 = [
     "relocate ",
     "submerge ",
     "climb ",
+    "baptize ",
     "focus on ",
     "hide from ",
     "penetrate ",
@@ -170,6 +171,7 @@ verbs3 = [ #verbs3 verbs are not concatinated with a noun
 ]
 nouns1 = [
     "this sandwich",
+    "the void",
     "the CarFax™",
     "the cheese tub",
     "Harvard",
