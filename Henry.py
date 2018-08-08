@@ -288,6 +288,12 @@ def introGen(a): #Returns a sentence starter for use in random phrase generation
     return(intro)
 def verbGen(a): #Returns a verb for use in random phrase generation
     Verbs1 = [
+    "tickle",
+    "weld",
+    "twist",
+    "soil",
+    "relocate",
+    "submerge",
     "climb ",
     "focus on ",
     "hide from ",
