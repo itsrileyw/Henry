@@ -2,9 +2,12 @@ import discord, random, asyncio, datetime, os
 from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
-async def on_ready():
+async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
     while not bot.is_closed:
         shitInterval()
+        for i in reversed(range(0,1801)):
+            bot.SPTime = str(datetime.timedelta(seconds=i))
+            await asyncio.sleep(1) #^^^ send a message every x seconds
 counter = 0
 Nrecent1 = []
 Nrecent2 = []
@@ -186,9 +189,6 @@ async def shitInterval():
         await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
         Evolutionary = bot.get_server(os.getenv("EVOLUTIONARY"))
         await bot.send_message(Evolutionary.get_channel(os.getenv("EVOLUTIONARY_TESTING1")), msg)
-        for i in reversed(range(0,1801)):
-            bot.SPTime = str(datetime.timedelta(seconds=i))
-            await asyncio.sleep(1) #^^^ send a message every x seconds
 def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shitpost
     a = random.randint(0,10)
     if (a < 5):
