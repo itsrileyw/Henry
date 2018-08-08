@@ -4,7 +4,7 @@ bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
     while not bot.is_closed:
-        if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 22):
+        if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 21):
             pass
         else:
             msg = shitpost()
