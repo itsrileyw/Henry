@@ -58,9 +58,7 @@ async def on_message(message): #Handles responding to messages
             else:
                 await asyncio.sleep(30) #Wait 30 seconds and then reset counter, bot can respond to bots again
                 counter = 0
-        elif (chance > 80 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
-            #conditions for responding to humans, "chance > 85" makes it so that there's a 15% random chance that he responds to someone for no reason
-            #wait 0.8 seconds before responding feels more natural
+        elif (chance > 90 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
             await asyncio.sleep(0.8)
             msg = retaliate() +" {0.author.mention}".format(message)
             await bot.send_message(message.channel, msg)   
@@ -492,6 +490,9 @@ def retaliate(): #Returns a randomized threatening / offensive statement
     return(response)
 def phraseGen(): #Returns a random phrase that Henry's creators made him able to say
     phrases = [
+    "EPIC FAIL, the bitch had IOS 7 on the iPhone 4.",
+    "Milk taste better when it go lumpy",
+    "When Chief Keef said 'we removed ya post cuz it violated community guidelines', I really felt that.",
     "Peen = Ween",
     "I might pistol whip myself",
     "Hit the Quan.",
