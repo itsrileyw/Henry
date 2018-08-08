@@ -157,6 +157,7 @@ verbs3 = [ #verbs3 verbs are not concatinated with a noun
     "sodomize a disabled walrus",
     "assault the disabled",
     "pillage",
+    "Get lost in the sauce.",
     "die",
     "evolve",
     "condensate",
