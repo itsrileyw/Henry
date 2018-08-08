@@ -6,7 +6,10 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
     while not bot.is_closed:
         shitInterval()
         for i in reversed(range(0,1801)):
-            bot.SPTime = str(datetime.timedelta(seconds=i))
+            if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 21):
+                bot.SPTime = "Idk man"
+            else:
+                bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
 counter = 0
 Nrecent1 = []
@@ -181,7 +184,7 @@ async def play(ctx, *args):
         msg += ' '
     await bot.send_message(ctx.message.channel, '!play '+msg)
 async def shitInterval():
-    if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 22):
+    if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 21):
         pass
     else:
         msg = shitpost()
