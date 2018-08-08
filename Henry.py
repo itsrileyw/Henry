@@ -549,4 +549,4 @@ def phraseGen(): #Returns a random phrase that Henry's creators made him able to
     phrase = phrases[i]
     Precent.append(i)
     return(phrase)
-bot.run(os.getenv("TOEKN"))
+bot.run(os.getenv('TOEKN'))
