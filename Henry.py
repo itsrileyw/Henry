@@ -494,7 +494,11 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
         Nrecent3.append(i)
     return(noun)
 def retaliate(): #Returns a randomized threatening / offensive statement
-    response = introGen(3)+verbGen(1)+nounGen(3)
+    chance = random.randint(0,100)
+    if (chance > 55):
+        response = shitpost()
+    else:
+        response = introGen(3)+verbGen(1)+nounGen(3)
     return(response)
 def phraseGen(): #Returns a random phrase that Henry's creators made him able to say
     phrases = [
