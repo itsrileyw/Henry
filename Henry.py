@@ -2,19 +2,9 @@ import discord, random, asyncio, datetime, os
 from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
-async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
+async def on_ready():
     while not bot.is_closed:
-        if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 21):
-            pass
-        else:
-            msg = shitpost()
-            BestMeta = bot.get_server(os.getenv("BESTMETA"))
-            await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
-            Evolutionary = bot.get_server(os.getenv("EVOLUTIONARY"))
-            await bot.send_message(Evolutionary.get_channel(os.getenv("EVOLUTIONARY_TESTING1")), msg)
-            for i in reversed(range(0,1801)):
-                bot.SPTime = str(datetime.timedelta(seconds=i))
-                await asyncio.sleep(1) #^^^ send a message every x seconds
+        shitInterval()
 counter = 0
 Nrecent1 = []
 Nrecent2 = []
@@ -187,6 +177,18 @@ async def play(ctx, *args):
         msg += arg
         msg += ' '
     await bot.send_message(ctx.message.channel, '!play '+msg)
+async def shitInterval():
+    if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 22):
+        pass
+    else:
+        msg = shitpost()
+        BestMeta = bot.get_server(os.getenv("BESTMETA"))
+        await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
+        Evolutionary = bot.get_server(os.getenv("EVOLUTIONARY"))
+        await bot.send_message(Evolutionary.get_channel(os.getenv("EVOLUTIONARY_TESTING1")), msg)
+        for i in reversed(range(0,1801)):
+            bot.SPTime = str(datetime.timedelta(seconds=i))
+            await asyncio.sleep(1) #^^^ send a message every x seconds
 def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shitpost
     a = random.randint(0,10)
     if (a < 5):
