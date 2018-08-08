@@ -1,6 +1,5 @@
 import discord, random, asyncio, datetime, os
 from discord.ext import commands
-token = "none of your business"
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
@@ -564,4 +563,4 @@ def phraseGen(): #Returns a random phrase that Henry's creators made him able to
     phrase = phrases[i]
     Precent.append(i)
     return(phrase)
-bot.run(token)
+bot.run(os.getenv("TOEKN"))
