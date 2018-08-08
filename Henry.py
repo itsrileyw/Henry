@@ -95,7 +95,10 @@ async def clear(ctx, input):
             await bot.send_message(ctx.message.channel, msg)
 @bot.command(pass_context = True)
 async def time(ctx): #Time sends the amount of time until Henry says something insightful again
-    await bot.send_message(ctx.message.channel, "Time until I "+verbGen(1)+"you again: "+bot.SPTime)
+    if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 22):
+        await bot.send_message(ctx.message.channel, "I'm not gonna "+verbGen(1)+"you again until at least 8:00")
+    else:
+        await bot.send_message(ctx.message.channel, "Time until I "+verbGen(1)+"you again: "+bot.SPTime)
 @bot.command(pass_context = True)
 async def kick(ctx, user: discord.Member):
     if (ctx.message.author.server_permissions.kick_members == False or user.id == "187656701380526080"):
