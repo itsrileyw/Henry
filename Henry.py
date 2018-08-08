@@ -494,7 +494,7 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
     return(noun)
 def retaliate(): #Returns a randomized threatening / offensive statement
     chance = random.randint(0,100)
-    if (chance > 55):
+    if (chance > 65):
         response = phraseGen()
     else:
         response = introGen(3)+verbGen(1)+nounGen(3)
