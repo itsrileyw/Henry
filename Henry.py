@@ -50,7 +50,7 @@ async def on_message(message): #Handles responding to messages
         chance = random.randint(0,100)
         if (message.author == bot.user):
             return
-        elif(message.author.bot == True and chance > 50):
+        elif(message.author.bot == True and chance > 85):
             if (counter < 3): #Don't want bots to keep responding to eachother, 3 times is good
                 await asyncio.sleep(2) #wait 2 seconds before responding to a bot to prevent rapid fire responses between bots
                 msg = retaliate() +" {0.author.mention}".format(message)
@@ -59,7 +59,7 @@ async def on_message(message): #Handles responding to messages
             else:
                 await asyncio.sleep(30) #Wait 30 seconds and then reset counter, bot can respond to bots again
                 counter = 0
-        elif (chance > 95 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
+        elif (chance > 99 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
             await asyncio.sleep(0.8)
             msg = retaliate() +" {0.author.mention}".format(message)
             await bot.send_message(message.channel, msg)   
