@@ -10,7 +10,7 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
         for i in reversed(range(0,1801)):
             bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
-@bot.event
+'''@bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
     ignored = (commands.CommandNotFound, commands.UserInputError)
     error = getattr(error, 'original', error)
@@ -19,7 +19,7 @@ async def on_command_error(error: Exception, ctx: commands.Context):
         await bot.send_message(ctx.message.channel, msg)
         return
     else:
-        print("ERROR!")
+        print("ERROR!")'''
 counter = 0
 @bot.event
 async def on_message(message): #Handles responding to messages
