@@ -3,10 +3,10 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
-    while not bot.is_closed:
+    while (not bot.is_closed and datetime.datetime.now().hour > 8 and datetime.datetime.now().hour < 22):
         msg = shitpost()
-        BestMeta = bot.get_server(os.getenv("BESTMETA"))
-        await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
+        BestMeta = bot.get_server(os.getenv("HENRYSSERVER"))
+        await bot.send_message(BestMeta.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
         for i in reversed(range(0,1801)):
             bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
@@ -95,7 +95,10 @@ async def clear(ctx, input):
             await bot.send_message(ctx.message.channel, msg)
 @bot.command(pass_context = True)
 async def time(ctx): #Time sends the amount of time until Henry says something insightful again
-    await bot.send_message(ctx.message.channel, "Time until I "+verbGen(1)+"you again: "+bot.SPTime)
+    if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 22):
+        await bot.send_message(ctx.message.channel, "I'm not gonna "+verbGen(1)+"you again until at least 8:00")
+    else:
+        await bot.send_message(ctx.message.channel, "Time until I "+verbGen(1)+"you again: "+bot.SPTime)
 @bot.command(pass_context = True)
 async def kick(ctx, user: discord.Member):
     if (ctx.message.author.server_permissions.kick_members == False or user.id == "187656701380526080"):
