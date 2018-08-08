@@ -184,7 +184,7 @@ async def play(ctx, *args):
         msg += ' '
     await bot.send_message(ctx.message.channel, '!play '+msg)
 async def shitInterval():
-    if (datetime.datetime.now().hour < 10 or datetime.datetime.now().hour > 21):
+    if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 21):
         pass
     else:
         msg = shitpost()
