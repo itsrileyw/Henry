@@ -117,9 +117,9 @@ async def kick(ctx, user: discord.Member):
         await bot.kick(user)
 async def shitInterval():
     if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 21):
-			  BestMeta = bot.get_server(os.getenv("BESTMETA"))
-		    await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
-		    print("Too late / early")
+				BestMeta = bot.get_server(os.getenv("BESTMETA"))
+				await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), "ERROR CODE 1 EVERYONE GET ON THE FUCKING GROUND")
+				print("Too late / early")
     else:
         msg = shitpost()
         BestMeta = bot.get_server(os.getenv("BESTMETA"))
