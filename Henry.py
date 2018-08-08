@@ -9,7 +9,7 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
         await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
         Evolutionary = bot.get_server(os.getenv("EVOLUTIONARY"))
         await bot.send_message(Evolutionary.get_channel(os.getenv("EVOLUTIONARY_LOUNGE")), msg)
-        for i in reversed(range(0,2001)):
+        for i in reversed(range(0,1801)):
             bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
 counter = 0
@@ -60,7 +60,7 @@ async def on_message(message): #Handles responding to messages
             else:
                 await asyncio.sleep(30) #Wait 30 seconds and then reset counter, bot can respond to bots again
                 counter = 0
-        elif (chance > 90 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
+        elif (chance > 95 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
             await asyncio.sleep(0.8)
             msg = retaliate() +" {0.author.mention}".format(message)
             await bot.send_message(message.channel, msg)   
