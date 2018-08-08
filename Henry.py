@@ -10,10 +10,7 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
         Evolutionary = bot.get_server(os.getenv("EVOLUTIONARY"))
         await bot.send_message(Evolutionary.get_channel(os.getenv("EVOLUTIONARY_TESTING1")), msg)
         for i in reversed(range(0,1801)):
-            if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 21):
-                bot.SPTime = "Idk man"
-            else:
-                bot.SPTime = str(datetime.timedelta(seconds=i))
+            bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
 @bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
