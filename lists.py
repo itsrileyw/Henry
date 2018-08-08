@@ -1,5 +1,5 @@
 blackList = [ #People not allowed to use Henry's commands
-    "150420859683733504", #@Lunar
+    "150420859683733504", # @Lunar
 ]
 commandError = [ #If someone calls a command that doesn't exist
     "Are you sure you typed that correctly retard?",
