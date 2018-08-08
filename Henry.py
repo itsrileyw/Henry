@@ -3,27 +3,13 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
-    greeting = bot.user.name+" is preparing to "+verbGen(1)+nounGen(1)
-    line = ''
-    for _ in range(0,len(greeting)):
-        line += '-'
-    print(line)
-    print(greeting)
-    print(line)
     while not bot.is_closed:
         msg = shitpost()
-        #server = bot.get_server("474446450873335808") #Henry's Server
-        #await bot.send_message(server.get_channel("474448841584934932"), msg) #Henry's Server
         server = bot.get_server("272178393091407872") #The Best Meta
         await bot.send_message(server.get_channel("454473643020517379"), msg) #The Best Meta
-        #server = bot.get_server("472243199776391179") #bot tester
-        #await bot.send_message(server.get_channel("472243200329908236"), msg) #bot tester
         for i in reversed(range(0,1801)):
             bot.SPTime = str(datetime.timedelta(seconds=i))
             await asyncio.sleep(1) #^^^ send a message every x seconds
-            #below timer is quoted out because it causes issues
-            '''os.system("cls")
-            print ("Time until next shitpost: "+str(datetime.timedelta(seconds=i))+"   ", end="\r")'''
 counter = 0
 Nrecent1 = []
 Nrecent2 = []
