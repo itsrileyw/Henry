@@ -4,15 +4,12 @@ bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
     while (not bot.is_closed):
-        if (datetime.datetime.now().hour > 5 and datetime.datetime.now().hour < 15):
-            #msg = shitpost()
-            msg = nounGen(1)
-            BestMeta = bot.get_server(os.getenv("HENRYSSERVER"))
-            await bot.send_message(BestMeta.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
-        for i in reversed(range(0,2)):
-            bot.SPTime = str(datetime.timedelta(seconds=i))
-            await asyncio.sleep(1) #^^^ send a message every x seconds
-'''@bot.event
+        msg = shitpost()
+        HenrysServer = bot.get_server(os.getenv("HENRYSSERVER"))
+        await bot.send_message(HenrysServer.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
+    for _ in reversed(range(0,3601)):
+        await asyncio.sleep(1)
+@bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
     ignored = (commands.CommandNotFound, commands.UserInputError)
     error = getattr(error, 'original', error)
@@ -21,7 +18,7 @@ async def on_command_error(error: Exception, ctx: commands.Context):
         await bot.send_message(ctx.message.channel, msg)
         return
     else:
-        print("ERROR!")'''
+        print("ERROR!")
 counter = 0
 @bot.event
 async def on_message(message): #Handles responding to messages
@@ -95,12 +92,6 @@ async def clear(ctx, input):
         elif(input >= 1000):
             msg = lists.clear1k[random.randint(0, len(lists.clear1k)-1)]
             await bot.send_message(ctx.message.channel, msg)
-@bot.command(pass_context = True)
-async def time(ctx): #Time sends the amount of time until Henry says something insightful again
-    if (datetime.datetime.now().hour < 8 or datetime.datetime.now().hour > 22):
-        await bot.send_message(ctx.message.channel, "I'm not gonna "+verbGen(1)+"you again until at least 8:00")
-    else:
-        await bot.send_message(ctx.message.channel, "Time until I "+verbGen(1)+"you again: "+bot.SPTime)
 @bot.command(pass_context = True)
 async def kick(ctx, user: discord.Member):
     if (ctx.message.author.server_permissions.kick_members == False or user.id == "187656701380526080"):
