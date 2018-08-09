@@ -3,14 +3,15 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
-    while (not bot.is_closed):
+    while not bot.is_closed:
         msg = shitpost()
         BestMeta = bot.get_server(os.getenv("GOAT"))
         await bot.send_message(BestMeta.get_channel(os.getenv("GOAT")), msg)
-        BestMeta = bot.get_server(os.getenv("HENRYSSERVER"))
-        await bot.send_message(BestMeta.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
-    for _ in reversed(range(0,3601)):
-        await asyncio.sleep(1)
+        BestMeta = bot.get_server(os.getenv("BESTMETA"))
+        await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
+        for i in reversed(range(0,3601)):
+            bot.SPTime = str(datetime.timedelta(seconds=i))
+            await asyncio.sleep(1) #^^^ send a message every x seconds
 @bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
     ignored = (commands.CommandNotFound, commands.UserInputError)
@@ -94,6 +95,9 @@ async def clear(ctx, input):
         elif(input >= 1000):
             msg = lists.clear1k[random.randint(0, len(lists.clear1k)-1)]
             await bot.send_message(ctx.message.channel, msg)
+@bot.command(pass_context = True)
+async def time(ctx): #Time sends the amount of time until Henry says something insightful again
+    await bot.send_message(ctx.message.channel, "Time until I "+verbGen(1)+"you again: "+bot.SPTime)
 @bot.command(pass_context = True)
 async def kick(ctx, user: discord.Member):
     if (ctx.message.author.server_permissions.kick_members == False or user.id == "187656701380526080"):
