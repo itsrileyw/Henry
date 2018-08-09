@@ -7,7 +7,7 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
         msg = shitpost()
         HenrysServer = bot.get_server(os.getenv("HENRYSSERVER"))
         await bot.send_message(HenrysServer.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
-    for _ in range(0,3601):
+    for i in range(0,3601):
         await asyncio.sleep(1)
 @bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
