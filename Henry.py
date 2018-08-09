@@ -6,10 +6,10 @@ async def on_ready():
     seconds = 3601
     while (not bot.is_closed):
         msg = shitpost()
-        GOAT = bot.get_server(os.getenv("GOAT"))
-        await bot.send_message(GOAT.get_channel(os.getenv("GOAT")), msg)
-        BestMeta = bot.get_server(os.getenv("BESTMETA"))
-        await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_HENRYS_V2")), msg)
+        GOAT = bot.get_server('263157828242505729')
+        await bot.send_message(GOAT.get_channel('263157828242505729'), msg)
+        BestMeta = bot.get_server('272178393091407872')
+        await bot.send_message(BestMeta.get_channel('477242374469451817'), msg)
         print("Meme Sent")
         print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
