@@ -3,12 +3,14 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
+    seconds = 3601
     while (not bot.is_closed):
         msg = shitpost()
         HenrysServer = bot.get_server(os.getenv("HENRYSSERVER"))
         await bot.send_message(HenrysServer.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
-        print (msg)
-        for _ in range(0,3601):
+        print("Meme Sent")
+        print("Waiting "+seconds+"...")
+        for _ in range(0,seconds):
             await asyncio.sleep(1)
 @bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
