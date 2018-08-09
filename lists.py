@@ -1,6 +1,13 @@
 blackList = [ #People not allowed to use Henry's commands
     "150420859683733504", # @Lunar
 ]
+rejected = [
+    "nah lol",
+    "no",
+    "maybe later",
+    "don't feel like it",
+    "ask someone else",
+]
 commandError = [ #If someone calls a command that doesn't exist
     "Are you sure you typed that correctly retard?",
     "I don't know what the fuck you want from me.",
@@ -97,7 +104,6 @@ verbs1 = [
     "relocate ",
     "submerge ",
     "climb ",
-    "baptize ",
     "focus on ",
     "hide from ",
     "penetrate ",
@@ -158,7 +164,6 @@ verbs3 = [ #verbs3 verbs are not concatinated with a noun
     "sodomize a disabled walrus",
     "assault the disabled",
     "pillage",
-    "Get lost in the sauce.",
     "die",
     "evolve",
     "condensate",
@@ -171,7 +176,6 @@ verbs3 = [ #verbs3 verbs are not concatinated with a noun
 ]
 nouns1 = [
     "this sandwich",
-    "the void",
     "the CarFax™",
     "the cheese tub",
     "Harvard",
