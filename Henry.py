@@ -5,7 +5,7 @@ bot = commands.Bot(command_prefix="Henry, ")
 async def on_ready():
     seconds = 3601
     while (not bot.is_closed):
-        msg = shitpost()+" @everyone"
+        msg = shitpost()
         GOAT = bot.get_server(os.getenv("GOAT"))
         await bot.send_message(GOAT.get_channel(os.getenv("GOAT")), msg)
         BestMeta = bot.get_server(os.getenv("BESTMETA"))
