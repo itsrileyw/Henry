@@ -42,8 +42,8 @@ async def on_message(message): #Handles responding to messages
             return
         elif(message.author.bot == True and chance > 85):
             if (counter < 3): #Don't want bots to keep responding to eachother, 3 times is good
-                await asyncio.sleep(2) #wait 2 seconds before responding to a bot to prevent rapid fire responses between bots
-                msg = retaliate() +" {0.author.mention}".format(message)
+                await asyncio.sleep(1) #wait 2 seconds before responding to a bot to prevent rapid fire responses between bots
+                msg = retaliate(1) +" {0.author.mention}".format(message)
                 counter += 1
                 await bot.send_message(message.channel, msg)
             else:
@@ -51,7 +51,11 @@ async def on_message(message): #Handles responding to messages
                 counter = 0
         elif (chance > 99 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
             await asyncio.sleep(0.7)
-            msg = retaliate() +" {0.author.mention}".format(message)
+            chance = random.randint(0,100)
+            if (chance < 70):
+                msg = retaliate(1) +" {0.author.mention}".format(message)
+            else:
+                msg = retaliate(2) +" @everyone"
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
 async def clear(ctx, input):
@@ -222,13 +226,12 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
         noun = lists.retaliationNouns[i]
         lists.Nrecent3.append(i)
     return(noun)
-def retaliate(): #Returns a randomized threatening / offensive statement
-    chance = random.randint(0,100)
-    if (chance > 65):
-        response = phraseGen()
-    else:
+def retaliate(a): #Returns a randomized threatening / offensive statement
+    if (a == 1):
         response = introGen(3)+verbGen(1)+nounGen(3)
-    return(response)
+    elif (a == 2):
+        response = phraseGen()
+        return(response)
 def phraseGen(): #Returns a random phrase that Henry's creators made him able to say
     if (len(lists.Precent) >= len(lists.phrases)*0.9):
         del lists.Precent[0]
