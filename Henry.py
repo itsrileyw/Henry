@@ -1,15 +1,11 @@
-import discord, random, asyncio, datetime, os, lists
+import discord, random, asyncio, datetime, os, Lists, Servers
 from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
 async def on_ready():
     seconds = 3601
     while (not bot.is_closed):
-        msg = shitpost()
-        GOAT = bot.get_server(os.getenv("GOAT"))
-        await bot.send_message(GOAT.get_channel(os.getenv("GOAT")), msg)
-        BestMeta = bot.get_server(os.getenv("BESTMETA"))
-        await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_HENRYS_V2")), msg)
+        send()
         print("Meme Sent")
         print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
@@ -20,7 +16,7 @@ async def on_command_error(error: Exception, ctx: commands.Context):
     error = getattr(error, 'original', error)
     if isinstance(error, ignored):
         await asyncio.sleep(0.7)
-        msg = lists.commandError[random.randint(0,len(lists.commandError)-1)]
+        msg = Lists.commandError[random.randint(0,len(Lists.commandError)-1)]
         await bot.send_message(ctx.message.channel, msg)
         return
     else:
@@ -31,10 +27,10 @@ async def on_message(message): #Handles responding to messages
     global counter
     if ("Henry, help" in message.content):
         await asyncio.sleep(0.7)
-        msg = lists.rejected[random.randint(0,len(lists.rejected)-1)]
+        msg = Lists.rejected[random.randint(0,len(Lists.rejected)-1)]
         await bot.send_message(message.channel, msg)
         return
-    if (message.content.startswith("Henry, ") and message.author.id not in lists.blackList):
+    if (message.content.startswith("Henry, ") and message.author.id not in Lists.blackList):
         await bot.process_commands(message)
     else:
         chance = random.randint(0,100)
@@ -61,19 +57,19 @@ async def on_message(message): #Handles responding to messages
 @bot.command(pass_context = True)
 async def clear(ctx, input):
     if (ctx.message.author.server_permissions.manage_messages == False):
-        msg = lists.noRights[random.randint(0, len(lists.noRights)-1)]
+        msg = Lists.noRights[random.randint(0, len(Lists.noRights)-1)]
         await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
         return
     else:
         if (not input.isdigit()):
-            msg = lists.badArg[random.randint(0, len(lists.badArg)-1)]
+            msg = Lists.badArg[random.randint(0, len(Lists.badArg)-1)]
             await asyncio.sleep(0.7)
             await bot.send_message(ctx.message.channel, msg)
             return          
         input = int(input)
         if (input < 2):
-            msg = lists.badArg[random.randint(0, len(lists.badArg)-1)]
+            msg = Lists.badArg[random.randint(0, len(Lists.badArg)-1)]
             await asyncio.sleep(0.7)
             await bot.send_message(ctx.message.channel, msg)
             return
@@ -106,26 +102,31 @@ async def clear(ctx, input):
             else:
                 return
         elif(input >= 1000):
-            msg = lists.clear1k[random.randint(0, len(lists.clear1k)-1)]
+            msg = Lists.clear1k[random.randint(0, len(Lists.clear1k)-1)]
             await bot.send_message(ctx.message.channel, msg)
 @bot.command(pass_context = True)
 async def kick(ctx, user: discord.Member):
     if (ctx.message.author.server_permissions.kick_members == False or user.id == "187656701380526080"):
-        msg = lists.noRights[random.randint(0, len(lists.noRights)-1)]
+        msg = Lists.noRights[random.randint(0, len(Lists.noRights)-1)]
         await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     elif(ctx.message.server.me.top_role <= user.top_role):
-        msg = lists.botOutrank[random.randint(0, len(lists.botOutrank)-1)]
+        msg = Lists.botOutrank[random.randint(0, len(Lists.botOutrank)-1)]
         await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     elif(ctx.message.author.top_role <= user.top_role):
-        msg = lists.authorOutrank[random.randint(0, len(lists.authorOutrank)-1)]
+        msg = Lists.authorOutrank[random.randint(0, len(Lists.authorOutrank)-1)]
         await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     else:
         await bot.say('Okay {}, time to go.'.format(user.mention))
         await asyncio.sleep(3)
         await bot.kick(user)
+async def send():
+    msg = shitpost()
+    for i in range(0, len(Servers.chain), 2):
+        server = bot.get_server(Servers.chain[i])
+        await bot.send_message(server.get_channel(Servers.chain[i]), msg)
 def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shitpost
     a = random.randint(0,10)
     if (a < 5):
@@ -150,82 +151,82 @@ def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shi
     shit = intro+verb+noun+end
     return(shit)
 def introGen(a): #Returns a sentence starter for use in random phrase generation
-    if (len(lists.Irecent1) >= len(lists.statementIntros)*0.9):
-        del lists.Irecent1[0]
-    elif (len(lists.Irecent2) >= len(lists.questionIntros)*0.9):
-        del lists.Irecent2[0]
-    elif (len(lists.Irecent3) >= len(lists.retaliationIntros)*0.9):
-        del lists.Irecent3[0]
+    if (len(Lists.Irecent1) >= len(Lists.statementIntros)*0.9):
+        del Lists.Irecent1[0]
+    elif (len(Lists.Irecent2) >= len(Lists.questionIntros)*0.9):
+        del Lists.Irecent2[0]
+    elif (len(Lists.Irecent3) >= len(Lists.retaliationIntros)*0.9):
+        del Lists.Irecent3[0]
     if (a == 1):
-        i = random.randint(0, len(lists.statementIntros)-1)
-        while (i in lists.Irecent1):
-            i = random.randint(0, len(lists.statementIntros)-1)
-        intro = lists.statementIntros[i]
-        lists.Irecent1.append(i)
+        i = random.randint(0, len(Lists.statementIntros)-1)
+        while (i in Lists.Irecent1):
+            i = random.randint(0, len(Lists.statementIntros)-1)
+        intro = Lists.statementIntros[i]
+        Lists.Irecent1.append(i)
     elif (a == 2):
-        i = random.randint(0, len(lists.questionIntros)-1)
-        while (i in lists.Irecent2):
-            i = random.randint(0, len(lists.questionIntros)-1)
-        intro = lists.questionIntros[i]
-        lists.Irecent2.append(i)
+        i = random.randint(0, len(Lists.questionIntros)-1)
+        while (i in Lists.Irecent2):
+            i = random.randint(0, len(Lists.questionIntros)-1)
+        intro = Lists.questionIntros[i]
+        Lists.Irecent2.append(i)
     elif (a == 3):
-        i = random.randint(0, len(lists.retaliationIntros)-1)
-        while (i in lists.Irecent3):
-            i = random.randint(0, len(lists.retaliationIntros)-1)
-        intro = lists.retaliationIntros[i]
-        lists.Irecent3.append(i)
+        i = random.randint(0, len(Lists.retaliationIntros)-1)
+        while (i in Lists.Irecent3):
+            i = random.randint(0, len(Lists.retaliationIntros)-1)
+        intro = Lists.retaliationIntros[i]
+        Lists.Irecent3.append(i)
     return(intro)
 def verbGen(a): #Returns a verb for use in random phrase generation
-    if (len(lists.Vrecent1) >= len(lists.verbs1)*0.9):
-        del lists.Vrecent1[0]
-    elif (len(lists.Vrecent2) >= len(lists.verbs2)*0.9):
-        del lists.Vrecent2[0]
-    elif (len(lists.Vrecent3) >= len(lists.verbs3)*0.9):
-        del lists.Vrecent3[0]
+    if (len(Lists.Vrecent1) >= len(Lists.verbs1)*0.9):
+        del Lists.Vrecent1[0]
+    elif (len(Lists.Vrecent2) >= len(Lists.verbs2)*0.9):
+        del Lists.Vrecent2[0]
+    elif (len(Lists.Vrecent3) >= len(Lists.verbs3)*0.9):
+        del Lists.Vrecent3[0]
     if (a == 1):
-        i = random.randint(0,len(lists.verbs1)-1)
-        while (i in lists.Vrecent1):
-            i = random.randint(0,len(lists.verbs1)-1)
-        verb = lists.verbs1[i]
-        lists.Vrecent1.append(i)
+        i = random.randint(0,len(Lists.verbs1)-1)
+        while (i in Lists.Vrecent1):
+            i = random.randint(0,len(Lists.verbs1)-1)
+        verb = Lists.verbs1[i]
+        Lists.Vrecent1.append(i)
     elif (a == 2):
-        i = random.randint(0,len(lists.verbs2)-1)
-        while (i in lists.Vrecent2):
-            i = random.randint(0,len(lists.verbs2)-1)
-        verb = lists.verbs2[i]
-        lists.Vrecent2.append(i)
+        i = random.randint(0,len(Lists.verbs2)-1)
+        while (i in Lists.Vrecent2):
+            i = random.randint(0,len(Lists.verbs2)-1)
+        verb = Lists.verbs2[i]
+        Lists.Vrecent2.append(i)
     else:
-        i = random.randint(0,len(lists.verbs3)-1)
-        while (i in lists.Vrecent3):
-            i = random.randint(0,len(lists.verbs3)-1)
-        verb = lists.verbs3[i]
-        lists.Vrecent3.append(i)      
+        i = random.randint(0,len(Lists.verbs3)-1)
+        while (i in Lists.Vrecent3):
+            i = random.randint(0,len(Lists.verbs3)-1)
+        verb = Lists.verbs3[i]
+        Lists.Vrecent3.append(i)      
     return(verb)
 def nounGen(a): #Returns a noun/object for use in random phrase generation
-    if (len(lists.Nrecent1) >= len(lists.nouns1)*0.9):
-        del lists.Nrecent1[0]
-    elif (len(lists.Nrecent2) >= len(lists.nouns2)*0.9):
-        del lists.Nrecent2[0]
-    elif (len(lists.Nrecent3) >= len(lists.retaliationNouns)*0.9):
-        del lists.Nrecent3[0]
+    if (len(Lists.Nrecent1) >= len(Lists.nouns1)*0.9):
+        del Lists.Nrecent1[0]
+    elif (len(Lists.Nrecent2) >= len(Lists.nouns2)*0.9):
+        del Lists.Nrecent2[0]
+    elif (len(Lists.Nrecent3) >= len(Lists.retaliationNouns)*0.9):
+        del Lists.Nrecent3[0]
     if (a == 1):
-        i = random.randint(0,len(lists.nouns1)-1)
-        while (i in lists.Nrecent1):
-            i = random.randint(0,len(lists.nouns1)-1)
-        noun = lists.nouns1[i]
-        lists.Nrecent1.append(i)
+        i = random.randint(0,len(Lists.nouns1)-1)
+        while (i in Lists.Nrecent1):
+            i = random.randint(0,len(Lists.nouns1)-1)
+        noun = Lists.nouns1[i]
+        Lists.Nrecent1.append(i)
     elif (a == 2):
-        i = random.randint(0,len(lists.nouns2)-1)
-        while (i in lists.Nrecent2):
-            i = random.randint(0,len(lists.nouns2)-1)
-        noun = lists.nouns2[i]
-        lists.Nrecent2.append(i)
+        i = random.randint(0,len(Lists.nouns2)-1)
+        while (i in Lists.Nrecent2):
+            i = random.randint(0,len(Lists.nouns2)-1)
+        noun = Lists.nouns2[i]
+        Lists.Nrecent2.append(i)
     else:
-        i = random.randint(0,len(lists.retaliationNouns)-1)
-        while (i in lists.Nrecent3):
-            i = random.randint(0,len(lists.retaliationNouns)-1)
-        noun = lists.retaliationNouns[i]
-        lists.Nrecent3.append(i)
+        i = random.randint(0,len(Lists.retaliationNouns)-1)
+        while (i in Lists.Nrecent3):
+            i = random.randint(0,len(Lists.retaliationNouns)-1)
+        noun = Lists.retaliationNouns[i]
+        Lists.Nrecent3.append(i)
     return(noun)
 def retaliate(a): #Returns a randomized threatening / offensive statement
     if (a == 1):
@@ -234,12 +235,12 @@ def retaliate(a): #Returns a randomized threatening / offensive statement
         response = phraseGen()
     return(response)
 def phraseGen(): #Returns a random phrase that Henry's creators made him able to say
-    if (len(lists.Precent) >= len(lists.phrases)*0.9):
-        del lists.Precent[0]
-    i = random.randint(0,len(lists.phrases)-1)
-    while (i in lists.Precent):
-        i = random.randint(0,len(lists.phrases)-1)
-    phrase = lists.phrases[i]
-    lists.Precent.append(i)
+    if (len(Lists.Precent) >= len(Lists.phrases)*0.9):
+        del Lists.Precent[0]
+    i = random.randint(0,len(Lists.phrases)-1)
+    while (i in Lists.Precent):
+        i = random.randint(0,len(Lists.phrases)-1)
+    phrase = Lists.phrases[i]
+    Lists.Precent.append(i)
     return(phrase)
 bot.run(os.getenv('TOKEN'))
