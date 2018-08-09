@@ -5,7 +5,10 @@ bot = commands.Bot(command_prefix="Henry, ")
 async def on_ready():
     seconds = 3601
     while (not bot.is_closed):
-        send()
+        msg = shitpost()
+        for i in range(0, len(Servers.chain), 2):
+            server = bot.get_server(Servers.chain[i])
+            await bot.send_message(server.get_channel(Servers.chain[i]), msg)
         print("Meme Sent")
         print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
@@ -122,11 +125,6 @@ async def kick(ctx, user: discord.Member):
         await bot.say('Okay {}, time to go.'.format(user.mention))
         await asyncio.sleep(3)
         await bot.kick(user)
-async def send():
-    msg = shitpost()
-    for i in range(0, len(Servers.chain), 2):
-        server = bot.get_server(Servers.chain[i])
-        await bot.send_message(server.get_channel(Servers.chain[i]), msg)
 def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shitpost
     a = random.randint(0,10)
     if (a < 5):
