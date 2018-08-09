@@ -213,7 +213,6 @@ nouns1 = [
     "a microwave",
     "an adult polar bear",
     "a pirated copy of Shrek 2",
-    "a jar of boiled cum",
     "some alphabet soup",
 ]
 nouns2 = [ #"Interest" nouns
