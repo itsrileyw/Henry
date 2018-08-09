@@ -1,4 +1,4 @@
-import discord, random, asyncio, datetime, os, lists
+import discord, random, asyncio, datetime, os, Lists
 from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
