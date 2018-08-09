@@ -53,9 +53,9 @@ async def on_message(message): #Handles responding to messages
             await asyncio.sleep(0.7)
             chance = random.randint(0,100)
             if (chance < 70):
-                msg = retaliate(1) +" {0.author.mention}".format(message)
+                msg = str(retaliate(1)) +" {0.author.mention}".format(message)
             else:
-                msg = retaliate(2) +" @everyone"
+                msg = str(retaliate(2)) +" @everyone"
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
 async def clear(ctx, input):
