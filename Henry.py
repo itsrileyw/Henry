@@ -17,7 +17,7 @@ async def on_command_error(error: Exception, ctx: commands.Context):
     ignored = (commands.CommandNotFound, commands.UserInputError)
     error = getattr(error, 'original', error)
     if isinstance(error, ignored):
-        await asyncio.sleep(1)
+        await asyncio.sleep(0.7)
         msg = lists.commandError[random.randint(0,len(lists.commandError)-1)]
         await bot.send_message(ctx.message.channel, msg)
         return
@@ -47,26 +47,26 @@ async def on_message(message): #Handles responding to messages
                 await asyncio.sleep(30) #Wait 30 seconds and then reset counter, bot can respond to bots again
                 counter = 0
         elif (chance > 99 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
-            await asyncio.sleep(1)
+            await asyncio.sleep(0.7)
             msg = retaliate() +" {0.author.mention}".format(message)
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
 async def clear(ctx, input):
     if (ctx.message.author.server_permissions.manage_messages == False):
         msg = lists.noRights[random.randint(0, len(lists.noRights)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
         return
     else:
         if (not input.isdigit()):
             msg = lists.badArg[random.randint(0, len(lists.badArg)-1)]
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.7)
             await bot.send_message(ctx.message.channel, msg)
             return          
         input = int(input)
         if (input < 2):
             msg = lists.badArg[random.randint(0, len(lists.badArg)-1)]
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.7)
             await bot.send_message(ctx.message.channel, msg)
             return
         elif (input <= 100): #Command can clear from 2 to 100 messages by default
@@ -104,15 +104,15 @@ async def clear(ctx, input):
 async def kick(ctx, user: discord.Member):
     if (ctx.message.author.server_permissions.kick_members == False or user.id == "187656701380526080"):
         msg = lists.noRights[random.randint(0, len(lists.noRights)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     elif(ctx.message.server.me.top_role <= user.top_role):
         msg = lists.botOutrank[random.randint(0, len(lists.botOutrank)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     elif(ctx.message.author.top_role <= user.top_role):
         msg = lists.authorOutrank[random.randint(0, len(lists.authorOutrank)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     else:
         await bot.say('Okay {}, time to go.'.format(user.mention))
