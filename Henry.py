@@ -2,21 +2,24 @@ import discord, random, asyncio, datetime, os, lists
 from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
-async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
-    while not bot.is_closed:
+async def on_ready():
+    seconds = 3601
+    while (not bot.is_closed):
         msg = shitpost()
-        BestMeta = bot.get_server(os.getenv("GOAT"))
-        await bot.send_message(BestMeta.get_channel(os.getenv("GOAT")), msg)
+        GOAT = bot.get_server(os.getenv("GOAT"))
+        await bot.send_message(GOAT.get_channel(os.getenv("GOAT")), msg)
         BestMeta = bot.get_server(os.getenv("BESTMETA"))
         await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
-        for i in reversed(range(0,3601)):
-            bot.SPTime = str(datetime.timedelta(seconds=i))
-            await asyncio.sleep(1) #^^^ send a message every x seconds
+        print("Meme Sent")
+        print("Waiting "+str(seconds)+" seconds...")
+        for _ in range(0,seconds):
+            await asyncio.sleep(1)
 @bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
     ignored = (commands.CommandNotFound, commands.UserInputError)
     error = getattr(error, 'original', error)
     if isinstance(error, ignored):
+        await asyncio.sleep(0.7)
         msg = lists.commandError[random.randint(0,len(lists.commandError)-1)]
         await bot.send_message(ctx.message.channel, msg)
         return
@@ -26,6 +29,10 @@ counter = 0
 @bot.event
 async def on_message(message): #Handles responding to messages
     global counter
+    if ("Henry, help" in message.content):
+        msg = lists.rejected[random.randint(0,len(lists.rejected)-1)]
+        await bot.send_message(message.channel, msg)
+        return
     if (message.content.startswith("Henry, ") and message.author.id not in lists.blackList):
         await bot.process_commands(message)
     else:
@@ -42,26 +49,26 @@ async def on_message(message): #Handles responding to messages
                 await asyncio.sleep(30) #Wait 30 seconds and then reset counter, bot can respond to bots again
                 counter = 0
         elif (chance > 99 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
-            await asyncio.sleep(0.8)
+            await asyncio.sleep(0.7)
             msg = retaliate() +" {0.author.mention}".format(message)
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
 async def clear(ctx, input):
     if (ctx.message.author.server_permissions.manage_messages == False):
         msg = lists.noRights[random.randint(0, len(lists.noRights)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
         return
     else:
         if (not input.isdigit()):
             msg = lists.badArg[random.randint(0, len(lists.badArg)-1)]
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.7)
             await bot.send_message(ctx.message.channel, msg)
             return          
         input = int(input)
         if (input < 2):
             msg = lists.badArg[random.randint(0, len(lists.badArg)-1)]
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.7)
             await bot.send_message(ctx.message.channel, msg)
             return
         elif (input <= 100): #Command can clear from 2 to 100 messages by default
@@ -96,21 +103,18 @@ async def clear(ctx, input):
             msg = lists.clear1k[random.randint(0, len(lists.clear1k)-1)]
             await bot.send_message(ctx.message.channel, msg)
 @bot.command(pass_context = True)
-async def time(ctx): #Time sends the amount of time until Henry says something insightful again
-    await bot.send_message(ctx.message.channel, "Time until I "+verbGen(1)+"you again: "+bot.SPTime)
-@bot.command(pass_context = True)
 async def kick(ctx, user: discord.Member):
     if (ctx.message.author.server_permissions.kick_members == False or user.id == "187656701380526080"):
         msg = lists.noRights[random.randint(0, len(lists.noRights)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     elif(ctx.message.server.me.top_role <= user.top_role):
         msg = lists.botOutrank[random.randint(0, len(lists.botOutrank)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     elif(ctx.message.author.top_role <= user.top_role):
         msg = lists.authorOutrank[random.randint(0, len(lists.authorOutrank)-1)]
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
     else:
         await bot.say('Okay {}, time to go.'.format(user.mention))
