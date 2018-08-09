@@ -30,6 +30,7 @@ counter = 0
 async def on_message(message): #Handles responding to messages
     global counter
     if ("Henry, help" in message.content):
+        await asyncio.sleep(0.7)
         msg = lists.rejected[random.randint(0,len(lists.rejected)-1)]
         await bot.send_message(message.channel, msg)
         return
