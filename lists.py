@@ -2,11 +2,11 @@ blackList = [ #People not allowed to use Henry's commands
     "150420859683733504", # @Lunar
 ]
 rejected = [
-    "nah lol"
-    "no"
-    "maybe later"
-    "don't feel like it"
-    "ask someone else"
+    "nah lol",
+    "no",
+    "maybe later",
+    "don't feel like it",
+    "ask someone else",
 ]
 commandError = [ #If someone calls a command that doesn't exist
     "Are you sure you typed that correctly retard?",
