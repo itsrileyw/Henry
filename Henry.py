@@ -5,7 +5,7 @@ bot = commands.Bot(command_prefix="Henry, ")
 async def on_ready():
     seconds = 3601
     while (not bot.is_closed):
-        msg = shitpost()
+        msg = shitpost()+" @everyone"
         GOAT = bot.get_server(os.getenv("GOAT"))
         await bot.send_message(GOAT.get_channel(os.getenv("GOAT")), msg)
         BestMeta = bot.get_server(os.getenv("BESTMETA"))
@@ -53,9 +53,9 @@ async def on_message(message): #Handles responding to messages
             await asyncio.sleep(0.7)
             chance = random.randint(0,100)
             if (chance < 70):
-                msg = str(retaliate(1)) +" {0.author.mention}".format(message)
+                msg = retaliate(1) +" {0.author.mention}".format(message)
             else:
-                msg = str(retaliate(2)) +" @everyone"
+                msg = retaliate(2)
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
 async def clear(ctx, input):
