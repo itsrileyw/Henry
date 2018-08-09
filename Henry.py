@@ -8,6 +8,8 @@ async def on_ready():
         msg = shitpost()
         for i in range(0, len(Servers.chain), 2):
             server = bot.get_server(Servers.chain[i])
+            print(server)
+            print(Servers.chain[i])
             await bot.send_message(server.get_channel(Servers.chain[i]), msg)
         print("Meme Sent")
         print("Waiting "+str(seconds)+" seconds...")
