@@ -2,14 +2,14 @@ import discord, random, asyncio, datetime, os, lists
 from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
-async def on_ready(): #Responsible for actually sending the shitposts to a discord server & channel
+async def on_ready():
     seconds = 3601
     while (not bot.is_closed):
         msg = shitpost()
         HenrysServer = bot.get_server(os.getenv("HENRYSSERVER"))
         await bot.send_message(HenrysServer.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
         print("Meme Sent")
-        print("Waiting "+str(seconds)+"...")
+        print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
             await asyncio.sleep(1)
 @bot.event
@@ -113,6 +113,9 @@ async def kick(ctx, user: discord.Member):
         await bot.say('Okay {}, time to go.'.format(user.mention))
         await asyncio.sleep(3)
         await bot.kick(user)
+@bot.command(pass_context = True)
+async def help(ctx):
+    await bot.say('no')
 def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shitpost
     a = random.randint(0,10)
     if (a < 5):
