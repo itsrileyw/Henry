@@ -53,6 +53,7 @@ async def on_message(message): #Handles responding to messages
             await asyncio.sleep(0.7)
             chance = random.randint(0,100)
             if (chance < 70):
+                print(retaliate(1))
                 msg = retaliate(1) +" {0.author.mention}".format(message)
             else:
                 msg = retaliate(2)
@@ -228,9 +229,7 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
     return(noun)
 def retaliate(a): #Returns a randomized threatening / offensive statement
     if (a == 1):
-        print(1)
         response = introGen(3)+verbGen(1)+nounGen(3)
-        print(response)
     elif (a == 2):
         response = phraseGen()
         return(response)
