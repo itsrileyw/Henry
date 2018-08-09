@@ -17,6 +17,7 @@ async def on_command_error(error: Exception, ctx: commands.Context):
     ignored = (commands.CommandNotFound, commands.UserInputError)
     error = getattr(error, 'original', error)
     if isinstance(error, ignored):
+        await asyncio.sleep(1)
         msg = lists.commandError[random.randint(0,len(lists.commandError)-1)]
         await bot.send_message(ctx.message.channel, msg)
         return
@@ -46,7 +47,7 @@ async def on_message(message): #Handles responding to messages
                 await asyncio.sleep(30) #Wait 30 seconds and then reset counter, bot can respond to bots again
                 counter = 0
         elif (chance > 99 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
-            await asyncio.sleep(0.8)
+            await asyncio.sleep(1)
             msg = retaliate() +" {0.author.mention}".format(message)
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
