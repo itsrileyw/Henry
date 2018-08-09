@@ -29,6 +29,7 @@ async def on_message(message): #Handles responding to messages
     if ("Henry, help" in message.content):
         msg = lists.rejected[random.randint(0,len(lists.rejected)-1)]
         await bot.send_message(message.channel, msg)
+        return
     if (message.content.startswith("Henry, ") and message.author.id not in lists.blackList):
         await bot.process_commands(message)
     else:
