@@ -9,7 +9,7 @@ async def on_ready():
         GOAT = bot.get_server(os.getenv("GOAT"))
         await bot.send_message(GOAT.get_channel(os.getenv("GOAT")), msg)
         BestMeta = bot.get_server(os.getenv("BESTMETA"))
-        await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_GENERAL")), msg)
+        await bot.send_message(BestMeta.get_channel(os.getenv("BESTMETA_HENRYS_V2")), msg)
         print("Meme Sent")
         print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
