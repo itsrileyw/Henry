@@ -113,9 +113,6 @@ async def kick(ctx, user: discord.Member):
         await bot.say('Okay {}, time to go.'.format(user.mention))
         await asyncio.sleep(3)
         await bot.kick(user)
-@bot.command(pass_context = True)
-async def help(ctx):
-    await bot.say('no')
 def shitpost(): #Uses returned intros, verbs, and nouns to create a coherent shitpost
     a = random.randint(0,10)
     if (a < 5):
