@@ -9,7 +9,7 @@ async def on_ready(): #Responsible for actually sending the shitposts to a disco
         HenrysServer = bot.get_server(os.getenv("HENRYSSERVER"))
         await bot.send_message(HenrysServer.get_channel(os.getenv("HENRYSSERVER-GENERAL")), msg)
         print("Meme Sent")
-        print("Waiting "+seconds+"...")
+        print("Waiting "+str(seconds)+"...")
         for _ in range(0,seconds):
             await asyncio.sleep(1)
 @bot.event
