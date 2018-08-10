@@ -250,6 +250,7 @@ retaliationNouns = [ #Nouns to use when responding to someone
     "your peepee",
 ]
 phrases = [
+    "I'm your dad Luke.",
     "Dang gummit...",
     "If barraco barner is our president why is he getting involved with Russia, scary.",
     "Tip: turn your location services off to save battery life",
