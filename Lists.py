@@ -234,7 +234,6 @@ retaliationNouns = [ #Nouns to use when responding to someone
     "you.",
     "your lungs.",
     "the roof of your mouth.",
-    "your big toe.",
     "your epidermal layer.",
     "your family.",
     "everyone you love.",
