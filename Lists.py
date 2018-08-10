@@ -245,7 +245,6 @@ retaliationNouns = [ #Nouns to use when responding to someone
     "your fucking toaster.",
     "your dumb fucking face.",
     "your neighbors.",
-    "a penguine and make you eat it.",
     "both of your arms.",
     "your peepee",
 ]
