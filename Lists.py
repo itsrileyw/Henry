@@ -251,6 +251,7 @@ retaliationNouns = [ #Nouns to use when responding to someone
     "your peepee",
 ]
 phrases = [
+    "*snap* Yup, this is going in my cringe compilation.",
     "EPIC FAIL, the bitch had IOS 7 on the iPhone 4.",
     "Milk taste better when it go lumpy",
     "When Chief Keef said 'we removed ya post cuz it violated community guidelines', I really felt that.",
