@@ -65,6 +65,11 @@ async def clear(ctx, input):
         await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
         return
+    elif (bot.server_permissions.manage_messages == False):
+        msg = Lists.botOutrank[random.randint(0, len(Lists.botOutrank)-1)]
+        await asyncio.sleep(0.7)
+        await bot.send_message(ctx.message.channel, msg)
+        return
     else:
         if (not input.isdigit()):
             msg = Lists.badArg[random.randint(0, len(Lists.badArg)-1)]
