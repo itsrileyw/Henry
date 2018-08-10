@@ -1,4 +1,4 @@
-import discord, random, asyncio, datetime, os, Lists, Servers
+import discord, random, asyncio, datetime, os, Lists
 from discord.ext import commands
 bot = commands.Bot(command_prefix="Henry, ")
 @bot.event
@@ -6,8 +6,8 @@ async def on_ready():
     seconds = 3601
     while (not bot.is_closed):
         msg = shitpost()
-        HenrysServer = bot.get_server(Servers.HENRYSSERVER)
-        await bot.send_message(HenrysServer.get_channel(Servers.HENRYSSERVER_GENERAL), msg)
+        HENRYSSERVER = bot.get_server(os.getenv('HENRYSSERVER'))
+        await bot.send_message(HENRYSSERVER.get_channel(os.getenv('HENRYSSERVER_GENERAL')), msg)
         print("Meme Sent")
         print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
