@@ -60,7 +60,6 @@ async def on_message(message): #Handles responding to messages
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
 async def clear(ctx, input):
-    print(ctx.message.channel.server.me.server_permissions.manage_messages)
     if (ctx.message.author.server_permissions.manage_messages == False):
         msg = Lists.noRights[random.randint(0, len(Lists.noRights)-1)]
         await asyncio.sleep(0.7)
