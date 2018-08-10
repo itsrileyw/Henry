@@ -14,7 +14,7 @@ async def on_ready():
         print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
             await asyncio.sleep(1)
-'''@bot.event
+@bot.event
 async def on_command_error(error: Exception, ctx: commands.Context):
     ignored = (commands.CommandNotFound, commands.UserInputError)
     error = getattr(error, 'original', error)
@@ -24,7 +24,7 @@ async def on_command_error(error: Exception, ctx: commands.Context):
         await bot.send_message(ctx.message.channel, msg)
         return
     else:
-        print("ERROR!")'''
+        print("ERROR!")
 counter = 0
 @bot.event
 async def on_message(message): #Handles responding to messages
@@ -60,13 +60,13 @@ async def on_message(message): #Handles responding to messages
             await bot.send_message(message.channel, msg)   
 @bot.command(pass_context = True)
 async def clear(ctx, input):
-    print(ctx.message.channel.server.me)
+    print(ctx.message.channel.server.me.server_permissions.manage_messages)
     if (ctx.message.author.server_permissions.manage_messages == False):
         msg = Lists.noRights[random.randint(0, len(Lists.noRights)-1)]
         await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
         return
-    elif (ctx.message.channel.server.me == False):
+    elif (ctx.message.channel.server.me.server_permissions.manage_messages == False):
         msg = Lists.botOutrank[random.randint(0, len(Lists.botOutrank)-1)]
         await asyncio.sleep(0.7)
         await bot.send_message(ctx.message.channel, msg)
