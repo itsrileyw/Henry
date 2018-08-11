@@ -95,6 +95,7 @@ retaliationIntros = [ #Sentence starters for when Henry responds to someone
     "Don't think I won't ",
     "You're about to make me ",
     "I don't think you want me to ",
+    "Bet I fucking won't" ,
 ]
 verbs1 = [
     "tickle ",
@@ -153,6 +154,7 @@ verbs2 = [ #verbs2 verbs are concatinated with nouns3 nouns
     "look into ",
     "try ",
     "invest in ",
+    "try out ",
 ]
 verbs3 = [ #verbs3 verbs are not concatinated with a noun
     "cuddle",
@@ -173,6 +175,12 @@ verbs3 = [ #verbs3 verbs are not concatinated with a noun
     "stabilize the economy",
     "restart Isis",
     "commit insurance fraud",
+    "quantinize my bones",
+    "shoot up an airport",
+    "cry in the shower while listening to Juice Wrld",
+    "commit tax evasion",
+    "hit my wife",
+    "hit my children",
 ]
 nouns1 = [
     "this sandwich",
@@ -249,6 +257,14 @@ retaliationNouns = [ #Nouns to use when responding to someone
     "your peepee",
 ]
 phrases = [
+    "Guys help I just posted a fortnite win on my snapchat and now I have 300 naked girls on my doorstep",
+    "Who else here into vore?",
+    "Guys I just unloaded an AR mag into the next door neighbor's dog what the fuck do I do",
+    "All that shit you talkin', all them pills you poppin', all that smokin' flock, you never do it",
+    "I'm sippin tea in these niggas neighborhoods",
+    "I'm here for a sprite sponsorship",
+    "Ladies and gentlemen, I have some bad news, I did not get the job at fruit loops, my body is now your communion",
+    "She took the fucking kids",
     "Democracy Time",
     "Eat spicy goodness like a boss.",
     "I don't trust like that.",
