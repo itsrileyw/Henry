@@ -211,9 +211,9 @@ def verbGen(a): #Returns a verb for use in random phrase generation
         Lists.Vrecent3.append(i)      
     return(verb)
 def nounGen(a): #Returns a noun/object for use in random phrase generation
-    print("1 "+Lists.Nrecent1)
-    print("2 "+Lists.Nrecent2)
-    print("3 "+Lists.Nrecent3)
+    print("1 "+str(Lists.Nrecent1))
+    print("2 "+str(Lists.Nrecent2))
+    print("3 "+str(Lists.Nrecent3))
     if (len(Lists.Nrecent1) >= len(Lists.nouns1)*0.9):
         del Lists.Nrecent1[0]
     elif (len(Lists.Nrecent2) >= len(Lists.nouns2)*0.9):
