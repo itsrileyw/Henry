@@ -217,12 +217,9 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
         del Lists.Nrecent2[0]
     elif (len(Lists.Nrecent3) >= len(Lists.retaliationNouns)*0.9):
         del Lists.Nrecent3[0]
-    print("Nrecent1: "+str(Lists.Nrecent1))
-    print("Nrecent3: "+str(Lists.Nrecent3))
     if (a == 1):
         i = random.randint(0,len(Lists.nouns1)-1)
         while (i in Lists.Nrecent1):
-            print("Gen was in recent")
             i = random.randint(0,len(Lists.nouns1)-1)
         noun = Lists.nouns1[i]
         Lists.Nrecent1.append(i)
@@ -235,7 +232,6 @@ def nounGen(a): #Returns a noun/object for use in random phrase generation
     else:
         i = random.randint(0,len(Lists.retaliationNouns)-1)
         while (i in Lists.Nrecent3):
-            print("Gen was in recent")
             i = random.randint(0,len(Lists.retaliationNouns)-1)
         noun = Lists.retaliationNouns[i]
         Lists.Nrecent3.append(i)
