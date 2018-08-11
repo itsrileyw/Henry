@@ -56,7 +56,7 @@ async def on_message(message): #Handles responding to messages
                 await asyncio.sleep(30) #Wait 30 seconds and then reset counter, bot can respond to bots again
                 counter = 0
         elif (chance > 98 or "henry" in message.content or "HENRY" in message.content or "Henry" in message.content or '<@472243513837355009>' in message.content):
-            if (chance < 75):
+            if (chance < 60):
                 msg = retaliate(1) +" {0.author.mention}".format(message)
             else:
                 msg = retaliate(2).format(message)
