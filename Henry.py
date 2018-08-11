@@ -11,7 +11,9 @@ async def on_ready():
         BESTMETA = bot.get_server(os.getenv('BESTMETA'))
         await bot.send_message(BESTMETA.get_channel(os.getenv('BESTMETA_HENRYS_CHANNEL')), msg)
         HENRYSSERVER = bot.get_server(os.getenv('HENRYSSERVER'))
-        await bot.send_message(HENRYSSERVER.get_channel(os.getenv('HENRYSSERVER_ROBOT_NIGGAS')), msg)        
+        await bot.send_message(HENRYSSERVER.get_channel(os.getenv('HENRYSSERVER_ROBOT_NIGGAS')), msg)
+        msg = shitpost()      
+        await bot.send_message(HENRYSSERVER.get_channel(os.getenv('HENRYSSERVER_INTEGRATION')), msg)  
         print("Meme Sent")
         print("Waiting "+str(seconds)+" seconds...")
         for _ in range(0,seconds):
