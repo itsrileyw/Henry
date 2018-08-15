@@ -271,7 +271,6 @@ retaliationNouns = [ #Nouns to use when responding to someone
     "your peepee",
 ]
 phrases = [
-    "These fuck niggas aren't ready for me to get on my yee haw shit",
     "Girls don't want luxury handbags and expensive clothes they want frag grenades and illegal firearms",
     "Girls think it's sweet when u throw a fucking flash bang grenade thru their window in the morning to wake them up for work",
     "White people be like 'oh yea ur cruisin for a bruisin bud",
