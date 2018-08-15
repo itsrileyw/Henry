@@ -22,7 +22,7 @@ commandError = [ #If someone calls a command that doesn't exist
     "Are you sure you typed that correctly retard?",
     "I don't know what the fuck you want from me.",
     "Take your time, try again.",
-    "I don't understand, try being slightly less retarted."
+    "I don't understand, try being slightly less retarted.",
 ]
 noRights = [ #If someone doesn't have server permission to use a command
     "Sorry, but you don't have any rights.",
@@ -41,7 +41,7 @@ noRights = [ #If someone doesn't have server permission to use a command
 badArg = [ #If a command doesn't get the required or correct argument
     "Do not waste my time",
     "Come on now retard, lets be serious.",
-    "What kind of surface were you dropped head-first onto as a child?"
+    "What kind of surface were you dropped head-first onto as a child?",
 ]
 clear1k = [ #Henry won't clear more than 999 messages at a time
     "Do you really fucking expect me to clear that many messages right now?",
