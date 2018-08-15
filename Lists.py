@@ -30,7 +30,7 @@ noRights = [ #If someone doesn't have server permission to use a command
     "You are not tall enough to ride this ride.",
     "You are not authorized retard",
     "I would, but I won't",
-    "Bitch, shutcho ass up"
+    "Bitch, shutcho ass up",
     "Hey chief, I'm not capable of doing that for you",
     "Nah nigga you gay HAHA",
     "Nah nigga you ain't cool enough for that shit",
